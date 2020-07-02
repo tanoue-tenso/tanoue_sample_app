@@ -24,6 +24,6 @@ module SampleApp
     config.active_record.raise_in_transactional_callbacks = true
 
     # webconsoleをdevelopmentのみではなくtestでも実行する
-    config.web_console.development_only = false
+    # config.web_console.development_only = false
   end
 end
