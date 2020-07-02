@@ -12,6 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# 追加gem
+gem 'bootstrap-sass' # 5.1.2にて
+
 # devのみでないとエラー
 gem 'web-console', group: :development
 
