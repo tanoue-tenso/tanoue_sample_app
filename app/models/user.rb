@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
             length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false } # 大文字小文字の区別をしない
+
+  has_secure_password
 end
