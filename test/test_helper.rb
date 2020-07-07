@@ -11,4 +11,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # テストユーザーがログインしてる？(ヘルパーメソッドはテストでは使えない)
+  def is_logged_in?
+    session[:user_id].present?
+  end
 end
