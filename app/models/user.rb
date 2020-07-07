@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password,
             presence: true, # has_secure_passwordの存在性確認は「更新時」には適用してくれないので追記
-            length: { minimum: 6 }
+            length: { minimum: 6 },
+            allow_nil: true # 更新時に空欄を許可, 登録時は has_secure_password がやってくれる
 
   # 文字列のハッシュ値を返す
   def self.digest(string)
