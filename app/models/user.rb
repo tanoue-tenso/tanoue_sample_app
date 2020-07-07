@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
+    return false if remember_digest.nil?
     # remember_digestカラムはハッシュ化した remember_token と一致しているか比較している
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
