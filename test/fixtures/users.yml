@@ -1,1 +1,5 @@
 # テストDB用のサンプルデータが含まれているファイル
+tanos:
+  name: tanos
+  email: tanoue@tenso.com
+  password_digest: <%= User.digest('password') %>
