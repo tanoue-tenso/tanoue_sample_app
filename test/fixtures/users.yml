@@ -3,6 +3,7 @@ tanos:
   name: tanos
   email: tanoue@tenso.com
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 tanochan:
   name: tanochan
