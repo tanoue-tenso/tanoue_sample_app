@@ -3,3 +3,8 @@ tanos:
   name: tanos
   email: tanoue@tenso.com
   password_digest: <%= User.digest('password') %>
+
+tanochan:
+  name: tanochan
+  email: tanoue@beenos.com
+  password_digest: <%= User.digest('password') %>
