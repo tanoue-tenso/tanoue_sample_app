@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass' # 5.1.2にて
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'faker',  '1.4.2' # 9.3.2にて
 
 # devのみでないとエラー
 gem 'web-console', group: :development
