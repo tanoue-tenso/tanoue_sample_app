@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token
-  before_save { self.email = self.email.downcase }
+  attr_accessor :remember_token, :activation_token
+  before_save :down_case_email
+  before_create :create_activation_digest
   validates :name,
             presence: true,
             length: { maximum: 50 }
@@ -46,4 +47,16 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  private
+    # メアドを全部小文字に
+    def down_case_email
+      self.email = self.email.downcase
+    end
+
+    # 有効かトークンとダイジェストを作成及び代入
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(self.activation_token) # 保存される前に属性値を持たせておく
+    end
 end
