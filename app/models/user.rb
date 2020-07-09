@@ -48,6 +48,17 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  # アカウントの有効化
+  def activate
+    self.update_attribute(:activated, true)
+    self.update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # 有効化用のメール送信
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   private
     # メアドを全部小文字に
     def down_case_email

@@ -11,7 +11,9 @@ class SessionsController < ApplicationController
         redirect_back_or user # redirect_to user_url(user)
       else
         message = "Account not activated"
-        messages += "Check your email for the activation link."
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
       end
     else
       flash.now[:danger] = 'Invalid emai/password combination'
