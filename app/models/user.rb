@@ -71,6 +71,11 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
+  # パスワード再設定の期限が切れている場合はtrue
+  def password_reset_expired?
+    self.reset_sent_at < 2.hours.ago # ~はより早い時刻と読む。つまり、現在より２時間以上前ならtrueを返す
+  end
+
   private
     # メアドを全部小文字に
     def down_case_email
