@@ -77,6 +77,11 @@ class User < ActiveRecord::Base
     self.reset_sent_at < 2.hours.ago # ~はより早い時刻と読む。つまり、現在より２時間以上前ならtrueを返す
   end
 
+  # feed(タイムライン)=自分と関係する投稿一覧
+  def feed
+    Micropost.where('user_id = ?', self.id)
+  end
+
   private
     # メアドを全部小文字に
     def down_case_email
