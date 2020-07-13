@@ -1,10 +1,8 @@
 # encoding: utf-8
 
 class PictureUploader < CarrierWave::Uploader::Base
-
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  process resize_to_limit: [400, 400]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -36,11 +34,10 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  # アップロード可能な拡張子リスト
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
