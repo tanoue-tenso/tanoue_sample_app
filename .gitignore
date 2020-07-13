@@ -16,6 +16,10 @@
 !/log/.keep
 /tmp
 
+# Ignore uploaded test images.
+/public/uploads
+
+
 .idea
 vendor
 .byebug_history
