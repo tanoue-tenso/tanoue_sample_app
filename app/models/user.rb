@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  # フォローする関連(能動)
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # buildとかcreateなどuserに紐づいたものが使える
   has_many :following, through: :active_relationships, source: :followed # user.following でフォローしてるユーザー一覧を取得
+  # フォローされる関連(受動)
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower # user.followers でフォローしてる
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :down_case_email
   before_create :create_activation_digest

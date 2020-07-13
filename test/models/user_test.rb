@@ -79,6 +79,7 @@ class UserTest < ActiveSupport::TestCase
     archer = users(:archer)
     assert_not tanos.following?(archer)
     tanos.follow(archer)
+    assert archer.followers.include?(tanos)
     assert tanos.following?(archer)
     tanos.unfollow(archer)
     assert_not tanos.following?(archer)
