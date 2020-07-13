@@ -29,3 +29,11 @@ users = User.order(:created_at).take(6) # 作成時間が新しい６つのユ�
     user.microposts.create!(content: content)
   end
 end
+
+# リレーションシップ
+users = User.all
+user = users.first # tanos
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
