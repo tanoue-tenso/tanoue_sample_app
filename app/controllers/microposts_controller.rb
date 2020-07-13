@@ -23,7 +23,7 @@ class MicropostsController < ApplicationController
 
     # contentだけweb経由で変更できるようにする
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :picture)
     end
 
     # 正しいユーザーか
