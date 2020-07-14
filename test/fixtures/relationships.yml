@@ -1,0 +1,15 @@
+one:
+  follower: tanos
+  followed: lana
+
+two:
+  follower: tanos
+  followed: mallory
+
+three:
+  follower: lana
+  followed: tanos
+
+four:
+  follower: archer
+  followed: tanos
