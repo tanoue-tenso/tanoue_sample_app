@@ -86,7 +86,13 @@ class User < ActiveRecord::Base
 
   # feed(タイムライン)=自分と関係する投稿一覧
   def feed
-    Micropost.where('user_id = ?', self.id)
+    # following_ids = self.following.pluck(:followed_id) #  self.following_idsも同じ結果
+    # Micropost.where(user_id: [self.id].concat(following_ids))
+    # Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id) # ※解答コード
+
+    # データ取り出しの効率化 => Railsを騙すテクニック(サブセレクト)
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   # ユーザーをフォロー

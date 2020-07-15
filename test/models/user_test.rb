@@ -84,4 +84,22 @@ class UserTest < ActiveSupport::TestCase
     tanos.unfollow(archer)
     assert_not tanos.following?(archer)
   end
+
+  test "feed should have the right posts" do
+    tanos = users(:tanos)
+    archer  = users(:archer)
+    lana    = users(:lana)
+    # フォローしているユーザーの投稿を確認
+    lana.microposts.each do |post_following|
+      assert tanos.feed.include?(post_following)
+    end
+    # 自分自身の投稿を確認
+    tanos.microposts.each do |post_self|
+      assert tanos.feed.include?(post_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    archer.microposts.each do |post_unfollowed|
+      assert_not tanos.feed.include?(post_unfollowed)
+    end
+  end
 end
