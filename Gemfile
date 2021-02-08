@@ -18,7 +18,7 @@ gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 gem 'faker',  '1.4.2' # 9.3.2にて
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
-gem 'carrierwave',             '0.10.0' # 11.4.1
+gem 'carrierwave',             '1.3.2' # 11.4.1
 gem 'mini_magick',             '3.8.0' # 画像リサイズ
 gem 'fog',                     '1.36.0' # 本番環境での画像アップロード用
 
